@@ -6,6 +6,7 @@ const express = require("express");
 // Routes
 const homeRoutes = require("./routes/homeRoutes");
 const { checkConnection } = require("./config/db");
+const createAllTable = require("./utils/dbUtils");
 
 
 // load env variables
@@ -26,6 +27,7 @@ app.listen(PORT, async() => {
     console.log(`Server is running on ${PORT}`);
     try {
         await checkConnection()
+        await createAllTable()
     } catch (error) {
         console.log("Failed to initialize the database", error);
     }

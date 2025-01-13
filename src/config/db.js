@@ -1,7 +1,5 @@
 require('dotenv').config()
 const mysql2 = require("mysql2/promise")
-const  password = process.env.DB_PASSWORD
-console.log('password =>', password);
 
 const pool = mysql2.createPool({
     host: process.env.HOST,
@@ -12,8 +10,6 @@ const pool = mysql2.createPool({
     queueLimit:0,
     waitForConnections:true
 })
-
-
 
 const checkConnection = async() => {
     try {
@@ -26,4 +22,4 @@ const checkConnection = async() => {
     }
 }
 
-module.exports = {pool, checkConnection}
+module.exports = {pool, checkConnection};
